@@ -1,0 +1,32 @@
+import random
+import string
+
+print("=== PASSWORD GENERATOR ===")
+
+# Get user input for password length
+length = int(input("Enter desired password length: "))
+
+# Ask user for complexity
+print("\nChoose password complexity:")
+print("1. Letters only")
+print("2. Letters + Numbers")
+print("3. Letters + Numbers + Symbols")
+
+choice = int(input("Enter your choice (1/2/3): "))
+
+# Character sets based on complexity
+if choice == 1:
+    characters = string.ascii_letters
+elif choice == 2:
+    characters = string.ascii_letters + string.digits
+elif choice == 3:
+    characters = string.ascii_letters + string.digits + string.punctuation
+else:
+    print("Invalid choice! Defaulting to full complexity.")
+    characters = string.ascii_letters + string.digits + string.punctuation
+
+# Generate password
+password = ''.join(random.choice(characters) for _ in range(length))
+
+# Display the password
+print("\nGenerated Password:", password)
